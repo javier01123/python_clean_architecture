@@ -1,11 +1,14 @@
 import os
 
+def get_sqlite_uri():
+    return "sqlite://"
 
 def get_postgres_uri():
     host = os.environ.get('DB_HOST', 'localhost')
-    port = 54321 if host == 'localhost' else 5432
+    # port = 54321 if host == 'localhost' else 5432
+    port = 5432
     password = os.environ.get('DB_PASSWORD', 'eJNhKFwEYfkm')
-    user, db_name = 'allocation', 'allocation'
+    user, db_name = 'postgres', 'pos_db'
     return f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
 
 
