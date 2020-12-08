@@ -17,9 +17,9 @@ services:
       - DB_PASS=pass123
     depends_on: 
       - postgres_service
-        
+
   postgres_service:
-    image: postgres:13-alpine
+    image: postgres
     environment: 
       - POSTGRES_DB=pos_db
       - POSTGRES_USER=postgres
