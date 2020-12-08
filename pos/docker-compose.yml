@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment: 
+      - DB_HOST=postgres_service
+      - DB_NAME=pos_db
+      - DB_USER=postgres
+      - DB_PASS=pass123
+    depends_on: 
+      - postgres_service
+        
+  postgres_service:
+    image: postgres:13-alpine
+    environment: 
+      - POSTGRES_DB=pos_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass123
+
